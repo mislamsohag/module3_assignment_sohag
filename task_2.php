@@ -7,16 +7,17 @@ Create an array called $numbers containing the numbers 1 to 10. Write a PHP func
 */
 
 
-$numbers =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+$numbers = range(1, 10);
 
-function removeEvenNumbers($numbers){
-    
-    $oddNumbers=[];    
-    if($numbers%2!=0){        
-        array_push($oddNumbers, $numbers);
-    } 
-    return $oddNumbers;
-
+function removeEvenNumbers(&$arr) {
+    foreach ($arr as $key => $number) {
+        if ($number % 2 === 0) {
+            unset($arr[$key]);
+        }
+    }
 }
-$result=array_map('removeEvenNumbers',$numbers);
-print_r($result);
+
+removeEvenNumbers($numbers);
+
+print_r($numbers);
+
